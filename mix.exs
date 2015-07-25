@@ -14,7 +14,7 @@ defmodule Elboto.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger, :httpotion]]
+    [applications: [:logger, :httpoison]]
   end
 
   # Dependencies can be Hex packages:
@@ -29,8 +29,9 @@ defmodule Elboto.Mixfile do
   defp deps do
     [
       {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.1"},
-      {:httpotion, "~> 2.1.0"},
-      {:poison, "~> 1.4.0"}
+      {:httpoison, "~> 0.7"},
+      {:poison, "~> 1.4.0"},
+      {:mock, "~> 0.1.1"}
     ]
   end
 end
