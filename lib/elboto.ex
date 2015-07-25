@@ -1,0 +1,2 @@
+defmodule Elboto do
+end
