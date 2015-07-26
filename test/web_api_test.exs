@@ -17,18 +17,18 @@ defmodule APITest do
   end
 
   test "sends empty json object when no args provided" do
-    body = request_with_empty_params()[:body]
+    body = request_with_empty_params[:body]
     assert body == "{}"
   end
 
   test "uses token in authorization header" do
-    request = some_request()
-    assert request[:headers][:Authorization] == "Token #{some_token()}"
+    request = some_request
+    assert request[:headers][:Authorization] == "Token #{some_token}"
   end
 
   test "uses given params in json post body" do
-    body = some_request()[:body] |> Poison.decode!
-    assert body == some_args()
+    body = some_request[:body] |> Poison.decode!
+    assert body == some_args
   end
 
   test "correctly identifies error responses" do
@@ -46,7 +46,7 @@ defmodule APITest do
   end
 
   def request_with_empty_params do
-    WebAPI.process_request(some_token(), some_action())
+    WebAPI.process_request(some_token, some_action)
   end
 
   def some_non_error_response do
@@ -58,11 +58,11 @@ defmodule APITest do
   end
 
   def some_request_with_params(params) do
-    WebAPI.process_request(some_token(), some_action(), params)
+    WebAPI.process_request(some_token, some_action, params)
   end
 
   def some_request do
-    WebAPI.process_request(some_token(), some_action(), some_args())
+    WebAPI.process_request(some_token, some_action, some_args)
   end
 
   def some_token do
